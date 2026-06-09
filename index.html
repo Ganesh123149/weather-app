@@ -1,0 +1,127 @@
+!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A GitHub Pages-ready weather app powered by Open-Meteo."
+    />
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://api.open-meteo.com" />
+    <link rel="preconnect" href="https://geocoding-api.open-meteo.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="weather-workspace" aria-label="Weather dashboard">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Live forecast</p>
+            <h1>Weather App</h1>
+          </div>
+
+          <div class="unit-toggle" aria-label="Temperature unit">
+            <button class="unit-button active" type="button" data-unit="celsius">
+              C
+            </button>
+            <button class="unit-button" type="button" data-unit="fahrenheit">
+              F
+            </button>
+          </div>
+        </header>
+
+        <form class="search-panel" id="search-form">
+          <label for="city-input">Search city</label>
+          <div class="search-row">
+            <input
+              id="city-input"
+              name="city"
+              type="search"
+              autocomplete="address-level2"
+              placeholder="Mumbai, London, New York..."
+              required
+            />
+            <button type="submit">Search</button>
+          </div>
+        </form>
+
+        <p class="status-message" id="status-message" role="status">
+          Loading the latest forecast...
+        </p>
+
+        <section class="current-layout" aria-label="Current weather">
+          <article class="current-panel">
+            <div class="location-line">
+              <div>
+                <p class="current-label">Current weather</p>
+                <h2 id="location-name">--</h2>
+              </div>
+              <span class="condition-icon" id="condition-icon" aria-hidden="true">
+                -
+              </span>
+            </div>
+
+            <div class="temperature-row">
+              <strong id="current-temp">--</strong>
+              <span id="current-unit">C</span>
+            </div>
+
+            <p class="condition-text" id="condition-text">--</p>
+
+            <dl class="metric-grid">
+              <div>
+                <dt>Feels like</dt>
+                <dd id="feels-like">--</dd>
+              </div>
+              <div>
+                <dt>Wind</dt>
+                <dd id="wind-speed">--</dd>
+              </div>
+              <div>
+                <dt>Humidity</dt>
+                <dd id="humidity">--</dd>
+              </div>
+              <div>
+                <dt>Rain chance</dt>
+                <dd id="rain-chance">--</dd>
+              </div>
+            </dl>
+          </article>
+
+          <aside class="details-panel" aria-label="Today details">
+            <h2>Today</h2>
+            <div class="detail-list">
+              <div>
+                <span>High</span>
+                <strong id="today-high">--</strong>
+              </div>
+              <div>
+                <span>Low</span>
+                <strong id="today-low">--</strong>
+              </div>
+              <div>
+                <span>Sunrise</span>
+                <strong id="sunrise">--</strong>
+              </div>
+              <div>
+                <span>Sunset</span>
+                <strong id="sunset">--</strong>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="forecast-section" aria-label="Seven day forecast">
+          <div class="section-heading">
+            <h2>7-day forecast</h2>
+            <p id="updated-at">--</p>
+          </div>
+          <div class="forecast-grid" id="forecast-grid"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
